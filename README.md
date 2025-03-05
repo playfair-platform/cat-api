@@ -4,7 +4,7 @@
 This is a library which aims to make Consumer Protection data easily accessible through an API.
 
 ## Supported Consumer Indexable Resources:
-- Consumer Action Taskforce (CAT) (https://wiki.rossmanngroup.com)
+- (in progress) Consumer Action Taskforce (CAT) (https://wiki.rossmanngroup.com)
 
 
 
@@ -12,4 +12,7 @@ This is a library which aims to make Consumer Protection data easily accessible 
 (soon on pypi)
 
 or:
-- `pip install git+git@github.com:playfair-platform/cat-api.git`
+`pip install git+git@github.com:playfair-platform/cat-api.git`
+
+## Usage
+(soon)
