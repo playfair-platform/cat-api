@@ -19,3 +19,17 @@ class QueryResult(BaseModel):
         if self.snippet:
             self.snippet = remove_html_tags(self.snippet)
         return self
+
+
+class WikiPage(BaseModel):
+    page_id: int
+    title: str
+    content: str
+
+
+    @model_validator(mode="after")
+    def remove_tags(self):
+        """Remove HTML tags after parsing."""
+        if self.content:
+            self.content = remove_html_tags(self.content)
+        return self
