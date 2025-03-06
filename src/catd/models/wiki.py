@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field, ConfigDict, model_validator
-from catd.utils import remove_html_tags
+from catd.utils import remove_html_tags, extract_links
 from typing import Callable
 
 class QueryResult(BaseModel):
@@ -25,11 +25,14 @@ class WikiPage(BaseModel):
     page_id: int
     title: str
     content: str
+    extracted_links: list[str]  = []
 
 
     @model_validator(mode="after")
-    def remove_tags(self):
-        """Remove HTML tags after parsing."""
+    def post_process_content(self):
+        """Post process content, such as removing tags and creating sections."""
         if self.content:
             self.content = remove_html_tags(self.content)
+            self.extracted_links = extract_links(self.content)
         return self
+    
